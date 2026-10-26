@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Blood & Organ Donation Network</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css?v=admin-dashboard-v1">
+</head>
+<body>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></symbol>
+        <symbol id="icon-user-plus" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M19 8v6m-3-3h6"></path></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></symbol>
+        <symbol id="icon-drop" viewBox="0 0 24 24"><path d="M12 3s7 8 7 13a7 7 0 0 1-14 0c0-5 7-13 7-13Z"></path><path d="M9 17a3 3 0 0 0 3 2"></path></symbol>
+        <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-3 2a15 15 0 0 0 6 6l2-3 5 2v4c0 1-1 2-2 2C10 20 4 14 3 5c0-1 1-2 2-2Z"></path></symbol>
+        <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></symbol>
+        <symbol id="icon-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></symbol>
+        <symbol id="icon-request" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M9 8h6M9 12h6M9 16h3"></path></symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 8.7c0 4.1-8.8 10.1-8.8 10.1S3.2 12.8 3.2 8.7A4.7 4.7 0 0 1 12 6a4.7 4.7 0 0 1 8.8 2.7Z"></path></symbol>
+        <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 5-3.4 8.2-8 10-4.6-1.8-8-5-8-10V6l8-3Z"></path><path d="m9 12 2 2 4-4"></path></symbol>
+        <symbol id="icon-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"></path><path d="M3 3v5h5m4-1v5l3 2"></path></symbol>
+        <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"></path><path d="M9 21v-7h6v7"></path></symbol>
+    </svg>
+    <nav class="topbar">
+        <div><span class="brand-mark">SBN</span><strong>Smart Blood & Organ Donation Network</strong></div>
+        <div class="top-actions">
+            <span class="api-pill user-pill d-none" id="userBadge"></span>
+            <button class="btn btn-sm btn-outline-secondary d-none" id="logoutBtn">Logout</button>
+        </div>
+    </nav>
+
+    <main class="container-fluid app-shell">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">Healthcare portal</p>
+                <h1 id="heroTitle">Login to open your <span>workspace.</span></h1>
+                <p class="lead" id="heroText">Donors manage consent and availability, hospitals raise emergency requests, patients request blood, and admins monitor the network.</p>
+            </div>
+        </section>
+
+        <section class="auth-layout" id="loginView">
+            <form class="panel login-panel" id="loginForm">
+                <div class="panel-heading"><span class="heading-icon"><svg aria-hidden="true"><use href="#icon-lock"></use></svg></span><div><h2>Login</h2><p>Access your account to continue.</p></div></div>
+                <label class="field-label">Email<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-mail"></use></svg><input class="form-control" type="email" name="email" autocomplete="username" required></span></label>
+                <label class="field-label">Password<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-lock"></use></svg><input class="form-control" type="password" name="password" placeholder="Enter your password" autocomplete="current-password" required></span></label>
+                <button class="btn btn-danger w-100 login-submit" type="submit">Login <span aria-hidden="true">→</span></button>
+            </form>
+            <form class="panel registration-panel" id="donorForm">
+                <div class="panel-heading"><span class="heading-icon"><svg aria-hidden="true"><use href="#icon-user-plus"></use></svg></span><div><h2>New User Registration</h2><p>Create a new account to join the network.</p></div></div>
+                <div class="registration-tabs" role="tablist" aria-label="Choose account type">
+                    <button class="registration-tab active" id="donorRegistrationTab" type="button" role="tab" aria-selected="true" data-registration-role="DONOR">Donor</button>
+                    <button class="registration-tab" id="patientRegistrationTab" type="button" role="tab" aria-selected="false" data-registration-role="PATIENT">Patient</button>
+                </div>
+                <input type="hidden" name="role" value="DONOR">
+                <div class="row g-3">
+                    <label class="col-md-4 field-label">Full name<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-user"></use></svg><input class="form-control" name="fullName" placeholder="Enter full name" autocomplete="name" required></span></label>
+                    <label class="col-md-4 field-label">Email<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-mail"></use></svg><input class="form-control" type="email" name="email" placeholder="Enter email address" autocomplete="email" required></span></label>
+                    <label class="col-md-4 field-label">Password<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-lock"></use></svg><input class="form-control" type="password" name="password" placeholder="Enter password" autocomplete="new-password" required></span></label>
+                    <label class="col-md-4 field-label">Blood group<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-drop"></use></svg><select class="form-select" name="bloodGroup" data-blood-options></select></span></label>
+                    <label class="col-md-4 field-label">Phone<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-phone"></use></svg><input class="form-control" name="phone" placeholder="Enter phone number" autocomplete="tel"></span></label>
+                    <label class="col-md-4 field-label">City<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-pin"></use></svg><input class="form-control" name="city" value="Chennai" placeholder="Enter city" autocomplete="address-level2"></span></label>
+                    <label class="col-md-4 field-label donor-registration-only">Last donation date<span class="input-wrap"><svg class="field-icon" aria-hidden="true"><use href="#icon-calendar"></use></svg><input class="form-control" type="date" name="lastDonationDate"></span></label>
+                    <div class="col-md-6 checks donor-registration-only">
+                        <label><input type="checkbox" name="bloodDonor" checked> Blood donor</label>
+                        <label><input type="checkbox" name="organDonor"> Organ donor</label>
+                        <label><input type="checkbox" name="availableForDonation" checked> Available</label>
+                    </div>
+                </div>
+                <button class="btn btn-danger mt-3 register-submit" type="submit">Register <span aria-hidden="true">→</span></button>
+            </form>
+        </section>
+
+        <section id="donorDashboard" class="donor-layout d-none" aria-label="Donor dashboard">
+            <aside class="donor-profile-column">
+                <section class="panel donor-profile-panel">
+                    <div class="donor-profile-heading"><div class="donor-section-title"><span class="donor-avatar" aria-hidden="true"><svg><use href="#icon-user"></use></svg></span><div><p class="donor-kicker">Your account</p><h2>Donor Profile</h2></div></div><button class="btn btn-sm btn-outline-secondary" id="editDonorProfileBtn" type="button">Edit profile</button></div>
+                    <dl class="donor-profile-details">
+                        <div><dt>Name</dt><dd id="donorName">Loading profile…</dd></div>
+                        <div><dt>Blood group</dt><dd id="donorProfileBlood">—</dd></div>
+                        <div><dt>City</dt><dd id="donorCity">—</dd></div>
+                        <div><dt>Blood availability</dt><dd id="donorProfileAvailability">—</dd></div>
+                        <div><dt>Phone</dt><dd id="donorPhone">—</dd></div>
+                        <div><dt>Last donation</dt><dd id="donorLastDonationDate">Not recorded</dd></div>
+                    </dl>
+                    <form class="donor-profile-edit d-none" id="donorProfileForm">
+                        <h3>Edit your details</h3>
+                        <label for="profileFullName">Full name<input class="form-control" id="profileFullName" name="fullName" maxlength="120" required></label>
+                        <label for="profileBloodGroup">Blood group<select class="form-select" id="profileBloodGroup" name="bloodGroup" data-blood-options required></select></label>
+                        <label for="profilePhone">Phone<input class="form-control" id="profilePhone" name="phone" maxlength="30" autocomplete="tel"></label>
+                        <label for="profileCity">City<input class="form-control" id="profileCity" name="city" maxlength="120" autocomplete="address-level2"></label>
+                        <label for="profileLastDonationDate">Last donation date<input class="form-control" id="profileLastDonationDate" name="lastDonationDate" type="date"></label>
+                        <p class="donor-profile-edit-note">Enter the actual last donation date, or leave it blank if you have never donated. Matching may exclude recent donations under the app’s 90-day eligibility rule.</p>
+                        <p class="form-feedback" id="donorProfileFeedback" role="status" aria-live="polite"></p>
+                        <div class="donor-profile-edit-actions"><button class="btn btn-sm btn-outline-secondary" id="cancelDonorProfileEditBtn" type="button">Cancel</button><button class="btn btn-sm btn-danger" id="saveDonorProfileBtn" type="submit">Save changes</button></div>
+                    </form>
+                </section>
+
+                <form class="panel donor-consent-form" id="organForm">
+                    <div class="donor-section-title"><span class="donor-avatar donor-avatar-red" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.8 8.7c0 4.1-8.8 10.1-8.8 10.1S3.2 12.8 3.2 8.7A4.7 4.7 0 0 1 12 6a4.7 4.7 0 0 1 8.8 2.7Z"/></svg></span><div><p class="donor-kicker">Optional preference</p><h2>Organ Donation Consent</h2></div></div>
+                    <label class="donor-form-label">Donor ID<input class="form-control" type="number" name="donorId" id="organDonorId" readonly required></label>
+                    <label class="donor-form-label">Organs<textarea class="form-control" name="organs" rows="2" placeholder="For example: kidney, liver, cornea"></textarea></label>
+                    <label class="donor-form-label">Consent statement<textarea class="form-control" name="consentStatement" rows="3" required>I voluntarily consent to organ donation registration.</textarea></label>
+                    <button class="btn btn-danger donor-save-button" type="submit">Save Organ Consent</button>
+                    <p class="donor-form-note">This consent is separate from blood donation availability.</p>
+                </form>
+            </aside>
+
+            <div class="donor-main-column">
+                <div class="donor-summary-grid" aria-label="Donation summary">
+                    <article class="panel donor-summary-card blood-summary-card">
+                        <div class="donor-summary-icon blood-drop-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5C9.5 6.3 5.5 10.2 5.5 14.7a6.5 6.5 0 0 0 13 0C18.5 10.2 14.5 6.3 12 2.5Z"/><path d="M9 15.5c.2 1.5 1.2 2.4 2.8 2.7"/></svg></div>
+                        <div><p class="donor-summary-label">Your blood group</p><strong class="donor-summary-value" id="donorBloodGroup">—</strong><span class="donor-summary-foot">From your profile</span></div>
+                    </article>
+                    <article class="panel donor-summary-card availability-summary-card">
+                        <div><p class="donor-summary-label">Blood donation</p><strong class="donor-summary-value donor-status-value" id="availabilityStatus">Loading…</strong><span class="donor-summary-foot">Change your availability</span></div>
+                        <button class="availability-toggle" id="availabilityToggle" type="button" role="switch" aria-checked="false" aria-label="Toggle blood donation availability" disabled><span></span></button>
+                    </article>
+                    <article class="panel donor-summary-card consent-summary-card">
+                        <div class="consent-status-dot" id="consentStatusDot" aria-hidden="true"></div>
+                        <div><p class="donor-summary-label">Organ consent</p><strong class="donor-summary-value donor-status-value" id="consentStatus">Loading…</strong><span class="donor-summary-foot">Persisted consent status</span></div>
+                    </article>
+                </div>
+
+                <section class="panel nearby-requests-panel">
+                    <div class="nearby-requests-heading">
+                        <div><p class="donor-kicker">Local opportunities</p><h2>Nearby Blood Requests</h2><p class="nearby-description">Active requests compatible with your blood group within your area.</p></div>
+                        <button class="btn btn-outline-secondary refresh-requests-button" id="refreshRequestsBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.8 9a7 7 0 0 1 11.8-2L20 12M4 12l2.4 5a7 7 0 0 0 11.8-2"/></svg><span>Refresh Requests</span></button>
+                    </div>
+                    <div id="nearbyRequests" class="nearby-request-list" aria-live="polite"><div class="requests-loading">Loading matching requests…</div></div>
+                </section>
+            </div>
+        </section>
+
+        <section class="portal-grid d-none" id="portalView">
+
+            <section class="panel role-panel patient-request-actions" data-role-panel="PATIENT">
+                <div class="patient-request-actions-copy"><p class="request-kicker">Patient services</p><h2>What do you need?</h2></div>
+                <div class="patient-request-tabs" role="tablist" aria-label="Choose a request type">
+                    <button class="patient-request-tab active" type="button" role="tab" aria-selected="true" data-patient-request-mode="blood">Request Blood</button>
+                    <button class="patient-request-tab" type="button" role="tab" aria-selected="false" data-patient-request-mode="organ">Request Organ</button>
+                </div>
+            </section>
+
+            <form class="panel role-panel" data-role-panel="PATIENT HOSPITAL" id="requestForm">
+                <h2>Emergency Blood Request</h2>
+                <div class="row g-3">
+                    <label class="col-md-6">Requester<input class="form-control" name="requesterName" value="City Hospital" required></label>
+                    <label class="col-md-6">Contact email<input class="form-control" type="email" name="contactEmail" value="care@hospital.test" required></label>
+                    <label class="col-md-6">Hospital<input class="form-control" name="hospitalName" value="City Hospital"></label>
+                    <label class="col-md-6">Phone<input class="form-control" name="contactPhone"></label>
+                    <label class="col-md-4">Required blood<select class="form-select" name="requiredBloodGroup" data-blood-options></select></label>
+                    <label class="col-md-4">Units<input class="form-control" type="number" name="unitsRequired" value="2" min="1"></label>
+                    <label class="col-md-4">Urgency<select class="form-select" name="urgency"><option>Critical</option><option>High</option><option>Normal</option></select></label>
+                    <label class="col-md-4">City<input class="form-control" name="city" value="Chennai"></label>
+                    <label class="col-12">Notes<textarea class="form-control" name="notes" rows="2"></textarea></label>
+                </div>
+                <button class="btn btn-danger mt-3" type="submit">Create & Match</button>
+            </form>
+
+            <form class="panel role-panel d-none" data-role-panel="PATIENT" id="organRequestForm" novalidate>
+                <h2>Organ Transplant Request</h2>
+                <p class="portal-help-text">Submit your request for administrator review. This review is not medical approval and does not confirm organ availability.</p>
+                <div class="row g-3">
+                    <label class="col-md-6" for="organRequestType">Organ type<span class="required-marker" aria-hidden="true"> *</span>
+                        <select class="form-select" id="organRequestType" name="organType" required>
+                            <option value="">Select an organ</option><option>Kidney</option><option>Liver</option><option>Heart</option><option>Lung</option><option>Pancreas</option><option>Cornea</option><option>Other</option>
+                        </select>
+                    </label>
+                    <label class="col-md-6" for="organRequestHospital">Hospital / transplant centre<span class="required-marker" aria-hidden="true"> *</span>
+                        <input class="form-control" id="organRequestHospital" name="hospitalName" maxlength="180" autocomplete="organization" placeholder="Enter hospital or transplant centre" required>
+                    </label>
+                    <label class="col-md-6" for="organRequestUrgency">Urgency<span class="required-marker" aria-hidden="true"> *</span>
+                        <select class="form-select" id="organRequestUrgency" name="urgency" required>
+                            <option value="">Select urgency</option><option>Routine</option><option>Urgent</option><option>Emergency</option>
+                        </select>
+                    </label>
+                    <label class="col-12" for="organRequestNotes">Relevant notes
+                        <textarea class="form-control" id="organRequestNotes" name="notes" rows="3" maxlength="2000" placeholder="Add information that may help with administrative review"></textarea>
+                    </label>
+                </div>
+                <button class="btn btn-danger mt-3" id="submitOrganRequestBtn" type="submit">Submit Organ Request</button>
+                <p class="form-feedback" id="organRequestFeedback" role="status" aria-live="polite"></p>
+            </form>
+
+            <section class="panel role-panel my-requests-panel" data-role-panel="PATIENT">
+                <div class="section-head my-requests-heading"><div><p class="request-kicker">Patient portal</p><h2>My Requests</h2></div><button class="btn btn-sm btn-outline-secondary" id="refreshMyRequestsBtn" type="button">Refresh</button></div>
+                <div class="table-responsive">
+                    <table class="table align-middle my-requests-table">
+                        <thead><tr><th scope="col">Request type</th><th scope="col">Submitted</th><th scope="col">Hospital / centre</th><th scope="col">Status</th><th scope="col">Details</th><th scope="col">Actions</th></tr></thead>
+                        <tbody id="myRequestsTable"><tr><td colspan="6"><span class="table-loading">Loading your requests…</span></td></tr></tbody>
+                    </table>
+                </div>
+                <p class="portal-disclaimer">Admin verification is an application review only. It is not medical approval for transplantation and does not confirm organ availability.</p>
+            </section>
+
+            <section class="panel role-panel" data-role-panel="PATIENT HOSPITAL ADMIN">
+                <div class="section-head">
+                    <h2>Nearest Compatible Donors</h2>
+                    <button class="btn btn-sm btn-outline-danger" id="demoMatchBtn" type="button">Match Demo Request</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead><tr><th>Donor</th><th>Blood</th><th>Distance</th><th>Score</th><th>Contact</th></tr></thead>
+                        <tbody id="matchesTable"><tr><td colspan="5">Create or match a request to calculate donors.</td></tr></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="admin-dashboard role-panel d-none" data-role-panel="ADMIN" aria-label="Admin dashboard">
+                <aside class="admin-sidebar" aria-label="Admin navigation">
+                    <div class="admin-sidebar-heading"><span class="admin-shield"><svg aria-hidden="true"><use href="#icon-shield"></use></svg></span><div><strong>Admin Portal</strong><small>Manage and monitor</small></div></div>
+                    <nav class="admin-nav">
+                        <button class="active" type="button" data-admin-nav="overview" aria-current="page"><svg aria-hidden="true"><use href="#icon-home"></use></svg>Overview</button>
+                        <button type="button" data-admin-nav="users"><svg aria-hidden="true"><use href="#icon-users"></use></svg>User Management</button>
+                        <button type="button" data-admin-nav="bloodRequests"><svg aria-hidden="true"><use href="#icon-drop"></use></svg>Blood Requests</button>
+                        <button type="button" data-admin-nav="organRequests"><svg aria-hidden="true"><use href="#icon-heart"></use></svg>Organ Requests</button>
+                        <button type="button" data-admin-nav="verification"><svg aria-hidden="true"><use href="#icon-shield"></use></svg>Organ Donor Verification</button>
+                        <button type="button" data-admin-nav="donationHistory"><svg aria-hidden="true"><use href="#icon-history"></use></svg>Donation History</button>
+                    </nav>
+                </aside>
+                <div class="admin-main">
+                    <header class="admin-page-heading"><div><p class="request-kicker">Admin portal</p><h2 id="adminPageTitle">Admin Dashboard</h2><p id="adminPageDescription">Manage users, requests, and verification.</p></div><div class="admin-date"><svg aria-hidden="true"><use href="#icon-calendar"></use></svg><span>Today<strong id="adminToday"></strong></span><button class="btn btn-sm btn-outline-secondary" id="refreshBtn" type="button">Refresh</button></div></header>
+                    <div class="admin-grid" id="adminSummary" aria-label="Dashboard summary">
+                        <article class="admin-stat-card"><span class="admin-stat-icon users"><svg aria-hidden="true"><use href="#icon-users"></use></svg></span><div><span>Total Users</span><strong id="dashUsers">—</strong></div></article>
+                        <article class="admin-stat-card"><span class="admin-stat-icon blood"><svg aria-hidden="true"><use href="#icon-drop"></use></svg></span><div><span>Blood Donors</span><strong id="dashBlood">—</strong></div></article>
+                        <article class="admin-stat-card"><span class="admin-stat-icon organs"><svg aria-hidden="true"><use href="#icon-heart"></use></svg></span><div><span>Organ Donors</span><strong id="dashOrgan">—</strong></div></article>
+                        <article class="admin-stat-card"><span class="admin-stat-icon reviews"><svg aria-hidden="true"><use href="#icon-request"></use></svg></span><div><span>Pending Reviews</span><strong id="dashPending">—</strong></div></article>
+                    </div>
+                    <div class="admin-content-grid">
+                        <section class="panel admin-section" id="adminBloodRequests">
+                            <div class="admin-section-heading"><div><span class="admin-section-icon blood"><svg aria-hidden="true"><use href="#icon-drop"></use></svg></span><h3>Recent Blood Requests</h3></div><button class="admin-view-link" id="adminBloodRequestsViewAll" type="button">View All <span aria-hidden="true">›</span></button></div>
+                            <div class="table-responsive"><table class="table align-middle admin-data-table"><thead><tr><th>Requester</th><th>Blood Group</th><th>Hospital</th><th>Urgency</th><th>Status</th></tr></thead><tbody id="adminBloodRequestsTable"><tr><td colspan="5"><span class="table-loading">Loading blood requests…</span></td></tr></tbody></table></div>
+                        </section>
+                        <section class="panel admin-section admin-organ-requests" id="adminOrganRequests">
+                            <div class="admin-section-heading"><div><span class="admin-section-icon organs"><svg aria-hidden="true"><use href="#icon-heart"></use></svg></span><h3>Organ Requests Awaiting Review</h3></div><button class="admin-view-link" id="adminOrganRequestsViewAll" type="button">View All <span aria-hidden="true">›</span></button></div>
+                            <p class="admin-section-note">Review records this application’s process only; it is not medical approval or confirmation of organ availability.</p>
+                            <div class="table-responsive"><table class="table align-middle admin-organ-requests-table"><thead><tr><th>Patient</th><th>Requested Organ</th><th>Hospital</th><th>Submitted On</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminOrganRequestsTable"><tr><td colspan="6"><span class="table-loading">Loading organ requests…</span></td></tr></tbody></table></div>
+                        </section>
+                        <section class="panel admin-section" id="adminVerification">
+                            <div class="admin-section-heading"><div><span class="admin-section-icon verified"><svg aria-hidden="true"><use href="#icon-shield"></use></svg></span><h3>Organ Donor Verification</h3></div></div>
+                            <div class="table-responsive"><table class="table align-middle admin-data-table"><thead><tr><th>User</th><th>Organ Consent</th><th>Submitted On</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminVerificationTable"><tr><td colspan="5"><span class="table-loading">Loading verification records…</span></td></tr></tbody></table></div>
+                        </section>
+                        <section class="panel admin-section" id="adminActivity">
+                            <div class="admin-section-heading"><div><span class="admin-section-icon activity"><svg aria-hidden="true"><use href="#icon-history"></use></svg></span><h3>Recent Activity</h3></div></div>
+                            <ol class="admin-activity-list" id="adminActivityList"><li class="table-loading">Loading activity…</li></ol>
+                        </section>
+                        <section class="panel admin-section" id="adminUsers">
+                            <div class="admin-section-heading"><div><span class="admin-section-icon users"><svg aria-hidden="true"><use href="#icon-users"></use></svg></span><h3>User Management</h3></div></div>
+                            <div class="table-responsive"><table class="table align-middle admin-data-table"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Blood Group</th><th>City</th><th>Availability</th></tr></thead><tbody id="adminUsersTable"><tr><td colspan="6"><span class="table-loading">Loading users…</span></td></tr></tbody></table></div>
+                        </section>
+                        <section class="panel admin-section" id="adminDonationHistory">
+                            <div class="admin-section-heading"><div><span class="admin-section-icon history"><svg aria-hidden="true"><use href="#icon-history"></use></svg></span><h3>Donation History</h3></div></div>
+                            <div class="table-responsive"><table class="table align-middle admin-data-table"><thead><tr><th>Donor</th><th>Date</th><th>Donation Type</th><th>Location</th><th>Blood Request</th></tr></thead><tbody id="adminDonationHistoryTable"><tr><td colspan="5"><span class="table-loading">Loading donation history…</span></td></tr></tbody></table></div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+    </main>
+
+    <dialog class="organ-review-dialog" id="organReviewDialog" aria-labelledby="organReviewTitle">
+        <form method="dialog" id="organReviewDialogForm">
+            <div class="review-dialog-heading"><div><p class="request-kicker">Administrator review</p><h2 id="organReviewTitle">Review Organ Request</h2></div><button class="dialog-close" value="cancel" aria-label="Close review dialog">×</button></div>
+            <div class="review-request-facts" id="reviewRequestFacts"></div>
+            <div class="review-notes-block"><strong>Patient notes</strong><p id="reviewRequestNotes">No notes provided.</p></div>
+            <label class="review-rejection-label d-none" id="reviewRejectionLabel" for="reviewRejectionReason">Rejection reason<span class="required-marker" aria-hidden="true"> *</span>
+                <textarea class="form-control" id="reviewRejectionReason" maxlength="1000" rows="3" placeholder="Explain why this request is being rejected"></textarea>
+            </label>
+            <p class="review-disclaimer">This decision records administrative review only. It is not medical approval for transplantation or confirmation of organ availability.</p>
+            <p class="form-feedback" id="reviewFeedback" role="status" aria-live="polite"></p>
+            <div class="review-dialog-actions">
+                <button class="btn btn-outline-secondary" type="button" id="cancelReviewBtn">Cancel</button>
+                <button class="btn btn-outline-danger" type="button" id="rejectOrganRequestBtn">Reject</button>
+                <button class="btn btn-danger" type="button" id="verifyOrganRequestBtn">Verify</button>
+            </div>
+        </form>
+    </dialog>
+    <div class="notification-stack" id="notifications" aria-live="polite" aria-relevant="additions"></div>
+    <script src="assets/js/main.js?v=admin-dashboard-v2"></script>
+</body>
+</html>

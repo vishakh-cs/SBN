@@ -1,0 +1,5 @@
+com\smartdonation\security\SessionExpirationIntegrationTest.class
+com\smartdonation\persistence\MySqlPersistenceIntegrationTest.class
+com\smartdonation\security\AuthenticationAuthorizationIntegrationTest.class
+com\smartdonation\security\AuthenticationAuthorizationIntegrationTest$RouteCase.class
+com\smartdonation\service\UserServiceTest.class
